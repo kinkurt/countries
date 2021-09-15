@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
      return(
          <div className="header">
-             <span className="title">Country information</span>
+             <span className="title">Country Information</span>
              <div>
                 
                 <FormControl variant="outlined" className={classes.formControl} >
