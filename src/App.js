@@ -41,7 +41,7 @@ const App = () => {
         <CssBaseline/>
         <div className="App" style={{height:"100vh"}}>
             <Container maxWidth="md" style={{display: "flex", height:"100vh", flexDirection:"column"}}> 
-                <a href="https://github.com/kinkurt" target="_blank" rel="noopener noreferrer" style={{position:"absolute",top:0, left:25,paddingTop:10, color:"gray", textDecoration:"none"}}>Github</a>
+                <a href="https://github.com/kinkurt/countries" target="_blank" rel="noopener noreferrer" style={{position:"absolute",top:0, left:25,paddingTop:10, color:"gray", textDecoration:"none"}}>Github</a>
                 <div style={{position:"absolute",top:0, right:15,paddingTop:10, cursor: "default"}}>
                     <span>Toggle light/dark</span>
                     <Switch color="primary" checked={colorTheme} onChange={()=> setcolorTheme(!colorTheme)}/>
