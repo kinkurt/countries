@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
      return(
          <div className="header">
-             <span className="title">Country Information</span>
+             <span className="title">Covid Information</span>
              <div>
                 
                 <FormControl variant="outlined" className={classes.formControl} >
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
                             Country
                         </MenuItem>
                         {countries.map((countryLists) => (
-                            <MenuItem key={countryLists.name} value={countryLists.name}>{countryLists.name}</MenuItem>
+                            <MenuItem key={countryLists.Country} value={countryLists.Country}>{countryLists.Country}</MenuItem>
                         ))}
                         
                     </Select>

@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import './App.css';
 import Information from './components/Information/Information';
+import CountrySummary from './components/CountrySummary/CountrySummary';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
     const [country, setCountry] = useState(``);
     const [countries, setCountries] = useState([]);
     const [colorTheme, setcolorTheme] = useState(false);
+    const [summaryCountryDetails, setSummaryCountryDetails] = useState([]);
 
     const theme = createTheme({
         palette:{
@@ -23,7 +25,7 @@ const App = () => {
 
     const countriesApi= async()=>{
         try{
-            const data = await axios.get(`https://restcountries.eu/rest/v2/all`);
+            const data = await axios.get(`https://api.covid19api.com/countries`);
             setCountries(data.data);
 
         }catch(error){
@@ -31,8 +33,21 @@ const App = () => {
         }
     };
 
+    const countrySummaryApi = async()=>{
+        try{
+            const details = await axios.get(`https://api.covid19api.com/summary`);
+            setSummaryCountryDetails(details.data);
+        }
+        catch(error){
+            console.log(error);
+        }
+
+        // console.log(summaryCountryDetails);
+    };
+
     useEffect(() => {
         countriesApi();
+        countrySummaryApi();
     },[]);
 
 
@@ -48,6 +63,7 @@ const App = () => {
                 </div>
                 <Header country={country} setCountry={setCountry} countries={countries}/>
                 {country && <Information country={country} />}
+                <CountrySummary countrySummary={summaryCountryDetails}/>
             </Container>
         </div>
         </ThemeProvider>
