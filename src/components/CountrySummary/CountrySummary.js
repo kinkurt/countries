@@ -9,37 +9,14 @@ import Paper from '@material-ui/core/Paper';
 
 import {useEffect,useState } from 'react';
 import './CountrySummary.css';
-import axios from 'axios';
 
-const CountrySummary = () =>{
-    const [countryData, setCountryData] = useState([]);
-    const [globalData, setGlobalData] = useState([]);
-    
+const CountrySummary = ({countries,global}) =>{
 
-    const countrySummaryApi = async()=>{
-        try{
-            const details = await axios.get(`https://api.covid19api.com/summary`);
-            setCountryData(details.data.Countries);
-            setGlobalData(details.data.Global);
-        }
-        catch(error){
-            console.log(error);
-        }
-        console.log(countryData);
-    };
-
-    useEffect(() => {
-        countrySummaryApi();
-    },[]);
-
-    
     return(
         <div>
-            <h1>Data</h1>
-            <div>{countryData ===  "" ? (<span>There was an error</span>) : 
+            <h1>Covid Numbers</h1>
+            <div>{countries ===  "" ? (<span>There was an error</span>) : 
             (
-            
-            
             <TableContainer key="tablecontainer" component={Paper}>
                 <Table  aria-label="simple table">
                 <TableHead>
@@ -56,11 +33,11 @@ const CountrySummary = () =>{
                 <TableRow key="global">
                     <TableCell component="th" scope="row">Global
                     </TableCell>
-                    <TableCell align="left">{globalData.NewConfirmed}</TableCell>
-                    <TableCell align="left">{globalData.TotalConfirmed}</TableCell>
-                    <TableCell align="left">{globalData.TotalDeaths}</TableCell>
+                    <TableCell align="left">{global.NewConfirmed}</TableCell>
+                    <TableCell align="left">{global.TotalConfirmed}</TableCell>
+                    <TableCell align="left">{global.TotalDeaths}</TableCell>
                 </TableRow>
-                { countryData.map((data) => (
+                {countries.map((data) => (
                     <TableRow key={data.Country}>
                     <TableCell component="th" scope="row">
                         {data.Country}
@@ -76,12 +53,7 @@ const CountrySummary = () =>{
             </TableContainer>
             )}
             </div>
-            
-            
         </div>
-
-
-        
     )
 
     

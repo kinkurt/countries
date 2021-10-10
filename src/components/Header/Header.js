@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     
 
      return(
-         <div className="header">
-             <span className="title">Covid Information</span>
+         <div className="header" >
+             <span className="title" style={{paddingTop:30}}>Country Information</span>
              <div>
                 
                 <FormControl variant="outlined" className={classes.formControl} >
